@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveTake Audiovisual - Monte seu Pacote</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0B0C10',
+                        card: '#16181E',
+                        accent: '#FF3B30',
+                        accentDark: '#D7261D',
+                        textMuted: '#9CA3AF'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0B0C10;
+            color: #FFFFFF;
+        }
+        .rec-dot {
+            animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-red {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+        .card-active {
+            border-color: #FF3B30 !important;
+            background-color: rgba(255, 59, 48, 0.05) !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between pb-32">
+
+    <!-- Header / Logo -->
+    <header class="pt-8 pb-6 px-4 text-center border-b border-gray-800/60 bg-gradient-to-b from-card to-dark">
+        <div class="max-w-md mx-auto flex flex-col items-center">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="relative w-10 h-10 border-2 border-white rounded-lg flex items-center justify-center">
+                    <div class="w-3 h-3 bg-accent rounded-full rec-dot"></div>
+                </div>
+                <div class="text-left">
+                    <h1 class="text-2xl font-extrabold tracking-wider leading-none text-white">LIVETAKE</h1>
+                    <p class="text-[10px] font-bold tracking-[0.3em] text-textMuted uppercase mt-1">A U D I O V I S U A L</p>
+                </div>
+            </div>
+            <p class="text-xs text-textMuted mt-2 font-medium">Orçamento Rápido & Personalizado</p>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="max-w-md mx-auto w-full px-4 pt-6 flex-1">
+        <div class="mb-6">
+            <h2 class="text-xl font-bold text-white tracking-tight">Monte o seu Pacote</h2>
+            <p class="text-xs text-textMuted mt-1">Selecione os serviços desejados para calcular o valor total em tempo real.</p>
+        </div>
+
+        <!-- Lista de Serviços -->
+        <div class="space-y-3.5">
+            
+            <!-- Cobertura Fotográfica -->
+            <div class="service-card border border-gray-800 bg-card rounded-2xl p-4 transition-all duration-200 cursor-pointer hover:border-gray-700" onclick="toggleFixedService('foto')" role="button" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleFixedService('foto'); }">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="flex-1">
+                        <span class="text-base font-semibold text-white">Cobertura Fotográfica</span>
+                        <p class="text-xs text-textMuted mt-1 leading-relaxed">Captura completa do evento com fotos tratadas em alta resolução.</p>
+                        <span class="inline-block mt-2 text-sm font-bold text-accent">R$ 150,00</span>
+                    </div>
+                    <div class="pt-1">
+                        <input type="checkbox" id="chk-foto" class="w-5 h-5 rounded border-gray-700 text-accent focus:ring-accent accent-accent" onclick="event.stopPropagation(); toggleFixedService('foto')" aria-label="Selecionar Cobertura Fotográfica">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aftermovie -->
+            <div class="service-card border border-gray-800 bg-card rounded-2xl p-4 transition-all duration-200 cursor-pointer hover:border-gray-700" onclick="toggleFixedService('aftermovie')" role="button" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleFixedService('aftermovie'); }">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="flex-1">
+                        <span class="text-base font-semibold text-white">Aftermovie</span>
+                        <p class="text-xs text-textMuted mt-1 leading-relaxed">Vídeo dinâmico e emocionante com os melhores momentos da cobertura.</p>
+                        <span class="inline-block mt-2 text-sm font-bold text-accent">R$ 100,00</span>
+                    </div>
+                    <div class="pt-1">
+                        <input type="checkbox" id="chk-aftermovie" class="w-5 h-5 rounded border-gray-700 text-accent focus:ring-accent accent-accent" onclick="event.stopPropagation(); toggleFixedService('aftermovie')" aria-label="Selecionar Aftermovie">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Storymaker -->
+            <div class="service-card border border-gray-800 bg-card rounded-2xl p-4 transition-all duration-200 cursor-pointer hover:border-gray-700" onclick="toggleFixedService('storymaker')" role="button" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleFixedService('storymaker'); }">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="flex-1">
+                        <span class="text-base font-semibold text-white">Storymaker</span>
+                        <p class="text-xs text-textMuted mt-1 leading-relaxed">Cobertura em tempo real e entrega imediata de vídeos verticais para Stories.</p>
+                        <span class="inline-block mt-2 text-sm font-bold text-accent">R$ 150,00</span>
+                    </div>
+                    <div class="pt-1">
+                        <input type="checkbox" id="chk-storymaker" class="w-5 h-5 rounded border-gray-700 text-accent focus:ring-accent accent-accent" onclick="event.stopPropagation(); toggleFixedService('storymaker')" aria-label="Selecionar Storymaker">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vídeo Curto -->
+            <div class="border border-gray-800 bg-card rounded-2xl p-4">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="flex-1">
+                        <span class="text-base font-semibold text-white">Vídeo Curto (Reels / TikTok)</span>
+                        <p class="text-xs text-textMuted mt-1 leading-relaxed">Vídeo vertical dinâmico editado até 60s.</p>
+                        <span class="inline-block mt-2 text-sm font-bold text-accent">R$ 50,00 <span class="text-xs font-normal text-textMuted">/ unidade</span></span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-dark border border-gray-800 rounded-xl p-1.5 self-center">
+                        <button type="button" onclick="event.stopPropagation(); changeQty('curto', -1)" aria-label="Diminuir quantidade de Vídeo Curto" class="w-8 h-8 rounded-lg bg-card border border-gray-700 flex items-center justify-center text-white font-bold">-</button>
+                        <span id="qty-curto" class="w-6 text-center font-bold text-base text-white">0</span>
+                        <button type="button" onclick="event.stopPropagation(); changeQty('curto', 1)" aria-label="Aumentar quantidade de Vídeo Curto" class="w-8 h-8 rounded-lg bg-card border border-gray-700 flex items-center justify-center text-white font-bold">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vídeo de Música Completa -->
+            <div class="border border-gray-800 bg-card rounded-2xl p-4">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="flex-1">
+                        <span class="text-base font-semibold text-white">Vídeo de Música Completa</span>
+                        <p class="text-xs text-textMuted mt-1 leading-relaxed">Captação e edição na íntegra de uma música apresentada.</p>
+                        <span class="inline-block mt-2 text-sm font-bold text-accent">R$ 100,00 <span class="text-xs font-normal text-textMuted">/ unidade</span></span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-dark border border-gray-800 rounded-xl p-1.5 self-center">
+                        <button type="button" onclick="event.stopPropagation(); changeQty('completa', -1)" aria-label="Diminuir quantidade de Vídeo de Música Completa" class="w-8 h-8 rounded-lg bg-card border border-gray-700 flex items-center justify-center text-white font-bold">-</button>
+                        <span id="qty-completa" class="w-6 text-center font-bold text-base text-white">0</span>
+                        <button type="button" onclick="event.stopPropagation(); changeQty('completa', 1)" aria-label="Aumentar quantidade de Vídeo de Música Completa" class="w-8 h-8 rounded-lg bg-card border border-gray-700 flex items-center justify-center text-white font-bold">+</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Total Fixo no Rodapé -->
+    <div class="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-md border-t border-gray-800 p-4 z-50">
+        <div class="max-w-md mx-auto flex flex-col gap-3">
+            <div class="flex items-center justify-between px-1">
+                <span class="text-xs uppercase tracking-wider font-bold text-textMuted">Valor Total do Pacote</span>
+                <span id="total-price" class="text-2xl font-black text-white">R$ 0,00</span>
+            </div>
+            
+            <button onclick="sendToWhatsapp()" class="w-full bg-accent hover:bg-accentDark text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-accent/20 flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                Enviar Orçamento via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Lógica de Cálculo e Envio -->
+    <script>
+        const prices = { foto: 150, aftermovie: 100, storymaker: 150, curto: 50, completa: 100 };
+        const state = { foto: false, aftermovie: false, storymaker: false, curto: 0, completa: 0 };
+
+        function formatBRL(amount) {
+            return amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function toggleFixedService(service) {
+            state[service] = !state[service];
+            const chk = document.getElementById('chk-' + service);
+            if (chk) chk.checked = state[service];
+
+            const card = chk ? chk.closest('.service-card') : null;
+            if (card) {
+                card.classList.toggle('card-active', state[service]);
+            }
+            updateTotal();
+        }
+
+        function changeQty(service, delta) {
+            state[service] = Math.max(0, state[service] + delta);
+            const qtyEl = document.getElementById('qty-' + service);
+            if (qtyEl) qtyEl.innerText = state[service];
+            updateTotal();
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            if (state.foto) total += prices.foto;
+            if (state.aftermovie) total += prices.aftermovie;
+            if (state.storymaker) total += prices.storymaker;
+            total += state.curto * prices.curto;
+            total += state.completa * prices.completa;
+            return total;
+        }
+
+        function updateTotal() {
+            const total = calculateTotal();
+            const el = document.getElementById('total-price');
+            if (el) el.innerText = formatBRL(total);
+        }
+
+        function sendToWhatsapp() {
+            const total = calculateTotal();
+            if (total === 0) {
+                alert('Por favor, selecione ao menos um serviço para enviar seu orçamento.');
+                return;
+            }
+
+            let msg = "*Olá, LiveTake! Montei meu pacote de orçamento no site:*\n\n";
+            if (state.foto) msg += `• Cobertura Fotográfica (${formatBRL(prices.foto)})\n`;
+            if (state.aftermovie) msg += `• Aftermovie (${formatBRL(prices.aftermovie)})\n`;
+            if (state.storymaker) msg += `• Storymaker (${formatBRL(prices.storymaker)})\n`;
+            if (state.curto > 0) msg += `• Vídeo Curto (${state.curto}x) = ${formatBRL(state.curto * prices.curto)}\n`;
+            if (state.completa > 0) msg += `• Vídeo de Música Completa (${state.completa}x) = ${formatBRL(state.completa * prices.completa)}\n`;
+
+            msg += `\n*TOTAL ESTIMADO: ${formatBRL(total)}*`;
+
+            const url = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
+
+        // Initialize total on load
+        window.addEventListener('DOMContentLoaded', () => {
+            updateTotal();
+        });
+    </script>
+</body>
+</html>
